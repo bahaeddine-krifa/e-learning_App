@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List chapitre</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <h1>List Chapitres</h1>
+    <div class="col-lg-3 d-flex flex-row">
+      <a th:href = "@{/ajouterChapitre}" class="btn btn-primary btn-sm-mb-3 m-5">Ajouter un Chapitre</a>
+      <a th:href = "@{/}" class="btn btn-secondary btn-sm-mb-3 m-5">Retour</a>
+    </div>
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th>ordre</th>
+      <th>nom chapitre</th>
+      <th>view Objectifs</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "chapitre: ${chapitres}">
+      <td th:text = "${chapitre.ordre}"></td>
+      <td th:text = "${chapitre.nomChap}"></td>
+      <td><a th:href = "@{/chapitrList/objectifsChapitre/{id}(id=${chapitre.id})}" class="btn btn-primary btn-sm-mb-3">view</a></td>
+      <td><a th:href ="@{/chapitrList/edit/{id}(id=${chapitre.id})}" class="btn btn-primary">Update</a>
+        <a th:href ="@{/chapitrList/{id}(id=${chapitre.id})}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
